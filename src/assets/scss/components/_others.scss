@@ -1,0 +1,48 @@
+/*---------------- Litepicker ----------------*/
+#litepicker {
+  border-radius: 5px;
+  width: 100%;
+  border: 1px solid #ddd;
+  text-align: center;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+/*---------------- Download CSV ----------------*/
+div.downloadCSV {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  font-size: 2rem;
+}
+
+#downloadCsvDialog p {
+  margin-bottom: 0.25em;
+}
+
+/*---------------- jQ Dialog Close ----------------*/
+.ui-button-icon.ui-icon.ui-icon-closethick {
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    width: 3px;
+    background: #fff;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 100%;
+    width: 3px;
+    background: #fff;
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+}

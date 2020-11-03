@@ -1,0 +1,64 @@
+:root {
+  --text-primary: #fff;
+  --text-secondary: rgba(255, 255, 255, 0.65);
+
+  --bg-primary: #18191f;
+
+  --card-color: rgba(0, 0, 0, 0.5);
+  --card-color-1: rgba(0, 0, 0, 0.2);
+
+  // --color-1: #0090e7;
+  // --color-2: #00d25b;
+  // --color-3: #8f5fe8;
+  // --color-4: #fc424a;
+  // --color-5: #ffab00;
+  --color-1: #6eb5ff;
+  --color-2: #aff8d8;
+  --color-3: #ff9cee;
+  --color-4: #fff5ba;
+
+  --color-grey: #eee;
+  --color-black: #333;
+  --color-white: #fff;
+
+  --backdrop: rgba(0, 0, 0, 0.5);
+  --color-primary: #006fac;
+  --color-primary-light: #297ab5;
+
+  --header-height: 10vh;
+  --content-height: 85vh;
+}
+
+/* global reset */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+
+  @include respond(tab-land) {
+    font-size: 56.25%; //1 rem = 9px
+  }
+
+  @include respond(tab-port) {
+    font-size: 50%; //1 rem = 8px
+  }
+}
+
+body {
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+}
+
+img {
+  max-width: 100%;
+}

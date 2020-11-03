@@ -1,0 +1,62 @@
+form#workLogForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > * {
+    width: 80%;
+    position: relative;
+
+    & > input {
+      width: 100%;
+      position: relative;
+    }
+  }
+
+  input[type='text'],
+  select {
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  input[type='submit'] {
+    background-color: #4caf50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+  }
+
+  input[type='submit']:hover {
+    background-color: #45a049;
+  }
+
+  & .close {
+    width: 1em;
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    font-size: 3rem;
+    transition: all 0.3s;
+    line-height: 1;
+    padding: 0.25rem;
+
+    &:active {
+      background-color: #ccc;
+      // border: 1px solid #aaa;
+      border-radius: 5px;
+      transform: translateY(2px);
+    }
+  }
+}
+
+.error-message {
+  color: red;
+  position: absolute;
+  width: 100%;
+  transform: translateY(-8px);
+}

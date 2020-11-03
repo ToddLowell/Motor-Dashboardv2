@@ -1,0 +1,301 @@
+/////////////////////////
+// General
+
+.container {
+  min-height: 100vh;
+  // width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// Layout of dashboard.html
+
+///////////// Navbar /////////////
+///// Selector ///// Content /////
+///// Selector ///// Content /////
+///// Selector ///// Content /////
+
+.nav {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 6.5rem;
+
+  &--logo {
+    width: 25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include respond(tab-port) {
+      display: none;
+    }
+
+    & img {
+      max-width: 100%;
+      max-height: 100%;
+      overflow: hidden;
+    }
+  }
+
+  &--text {
+    flex: 1;
+    display: flex;
+    align-items: center;
+
+    h1 {
+      width: 100%;
+    }
+  }
+
+  .sidebarToggle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 3rem;
+    font-size: 2rem;
+  }
+}
+
+.content {
+  display: flex;
+  width: 100%;
+  // viewport height - nav height
+  min-height: calc(100vh - 6.5rem);
+}
+
+.selector {
+  // position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25rem;
+  flex: 1 0 auto;
+  // min-height: 90vh;
+
+  @include respond(tab-port) {
+    display: none;
+  }
+
+  &-flex {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+  }
+
+  // align to bottom
+  &--bottom {
+    margin-top: auto;
+  }
+
+  // svg icons
+  & svg {
+    width: 3.5rem !important;
+  }
+}
+
+/////////////////////////
+// Home Page
+.home-page {
+  width: 100%;
+  min-height: var(--content-height);
+  display: flex;
+  flex-direction: column;
+
+  @include respond(tab-port) {
+    flex: 0 1 100%;
+  }
+
+  &--preview {
+    display: flex;
+    flex-direction: column;
+
+    @include respond(tab-port) {
+      flex-wrap: wrap;
+    }
+  }
+}
+
+.home-page--widgets {
+  margin: 2rem;
+  margin-bottom: 0;
+  display: grid;
+  gap: 2rem;
+  // grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+
+  grid-template-columns: repeat(4, 1fr);
+
+  @include respond(tab-land) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond(phone) {
+    grid-template-columns: 1fr;
+  }
+
+  & > .card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+}
+
+.parameters {
+  flex: 0 1 50%;
+  flex-grow: 1;
+  margin: 2rem;
+}
+
+.status {
+  flex: 0 1 50%;
+  flex-grow: 1;
+  margin: 2rem;
+  margin-top: 0;
+
+  @include respond(tab-port) {
+    margin: 2rem;
+    margin-top: 0;
+  }
+}
+
+/////////////////////////
+// Motor Page
+.motor-page {
+  width: 100%;
+  min-height: var(--content-height);
+  margin: 2rem;
+
+  display: grid;
+  grid-template-rows: repeat(3, min-content);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2rem;
+
+  .motor__graphs {
+    grid-row: 1 / 2;
+  }
+
+  .motor__graphs-2 {
+    grid-row: 2 / 3;
+    grid-column: 1 / 2;
+  }
+
+  .motor__status {
+    grid-row: 1 / 3;
+    grid-column: 2 / 3;
+  }
+
+  .motor__graph--freq-vrms {
+    grid-column: 1 / -1;
+  }
+
+  @include respond(tab-land) {
+    .motor__graphs {
+      grid-column: 1 / -1;
+    }
+
+    .motor__graphs-2 {
+      grid-column: 1 / -1;
+    }
+
+    .motor__status {
+      grid-row: 3 / 4;
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+.motor {
+  &__graphs,
+  &__graphs-2 {
+    position: relative;
+
+    &--switch {
+      position: absolute;
+      font-size: 2rem;
+      top: 2.5rem;
+      right: 2.5rem;
+      border: none;
+      background: transparent;
+      color: white;
+
+      &:focus,
+      &:active {
+        outline: none;
+      }
+    }
+  }
+
+  &__graph-vrms {
+    margin-bottom: 3rem;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__graph--time {
+    // margin: 2rem;
+    // height: calc(var(--content-height) * 0.5);
+
+    @include respond(tab-port) {
+      //
+    }
+
+    @include respond(phone) {
+      width: 100%;
+    }
+  }
+
+  &__graph--average {
+    // margin: 2rem;
+    // height: calc(var(--content-height) * 0.5);
+
+    @include respond(tab-port) {
+      //
+    }
+
+    @include respond(phone) {
+      width: 100%;
+      margin: 0 2rem;
+    }
+  }
+
+  &__graph--freq-mag {
+    // margin: 2rem;
+    // margin-top: 0;
+    // height: calc(var(--content-height) * 0.5);
+
+    @include respond(tab-port) {
+      //
+    }
+
+    @include respond(phone) {
+      width: 100%;
+      margin: 0 2rem;
+    }
+  }
+
+  &__graph--freq-vrms {
+    // margin: 2rem;
+    // margin-top: 0;
+    // height: calc(var(--content-height) * 0.3);
+
+    @include respond(tab-port) {
+      //
+    }
+
+    @include respond(phone) {
+      width: 100%;
+      margin: 0 2rem;
+    }
+  }
+
+  &__status {
+    // margin: 2rem;
+    // margin-left: 0;
+    // height: var(--content-height);
+
+    @include respond(tab-port) {
+      //
+    }
+  }
+}

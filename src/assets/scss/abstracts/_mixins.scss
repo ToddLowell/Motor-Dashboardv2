@@ -1,0 +1,64 @@
+// media query manager
+/*
+0 - 600px:     Phone
+600 - 900px:   Tablet (portrait)
+900 - 1200px:  Tablet (landscape)
+1200 - 1800px: normal
+1800+px:       Desktop (large)
+
+1em = 16px
+
+$breakpoint argument choices:
+- phone
+- tab-port
+- tab-land
+- big-desktop
+*/
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 37.5em) {
+      // 600px
+      @content;
+    }
+  }
+  @if $breakpoint == tab-port {
+    @media (max-width: 62.5em) {
+      // 1000px
+      @content;
+    }
+  }
+  @if $breakpoint == tab-land {
+    @media (max-width: 81.25em) {
+      // 1300px
+      @content;
+    }
+  }
+}
+
+// also _utilities
+@mixin absCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.center {
+  @include absCenter;
+}
+
+.align-center {
+  text-align: center;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.click {
+  cursor: pointer;
+}
+
+.ma-4 {
+  margin: 16px;
+}

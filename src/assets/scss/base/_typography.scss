@@ -1,0 +1,56 @@
+.header__primary {
+  text-transform: uppercase;
+}
+
+.heading__secondary {
+  text-transform: uppercase;
+  text-align: center;
+  padding: 2rem;
+}
+
+.selector--version {
+  padding-right: 2rem;
+  margin: 1rem 0 2rem;
+  margin-left: auto;
+  // float: right;
+}
+
+.selector a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.motor__status--topbar {
+  font-size: 1.8rem;
+  padding: 1rem;
+}
+
+// Work List //
+.back_button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 2rem;
+  color: white;
+  font-size: 7rem;
+  line-height: 1;
+
+  a {
+    color: inherit;
+    display: inline-block;
+    transition: all 0.3s;
+
+    &:hover {
+      color: #eee;
+    }
+
+    &:active {
+      color: #ccc;
+      transform: translateY(2px);
+    }
+  }
+}
+
+h1.title {
+  margin: 4.5rem;
+}

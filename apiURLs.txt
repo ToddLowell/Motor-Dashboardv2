@@ -1,0 +1,186 @@
+export default {
+  // Home Page
+  uptime: `/api/uptime`,
+  listOfMotors: `/api/motor/list`,
+  latestValues: `/api/motors/latest`,
+
+  // Motor Page
+  getValues: `/api/motor/getvalues?devid=%devid%&totpts=%totpts%`,
+  getVrmsValues: `/api/motor/getlatestvrmsmax?devid=%devid%&num=%totpts%`,
+  getLatestValue: `/api/motor/getvalues?devid=%devid%&totpts=1`,
+  getAlert: `/api/alert/getalert?devid=%devid%&num=%num%`,
+  getAverage: `/api/motor/average?devid=%devid%&item=%item%&timerange=%timerange%&timeslot=%timeslot%`,
+  customAverage: `/api/motor/customaverage?devid=%devid%&item=%item%&begindate=%begindate%&enddate=%enddate%&timeslot=%timeslot%`,
+  csvDownload: `/api/motor/getcustomdatevalues?devid=%devid%&begindate=%begindate%&enddate=%enddate%`,
+  statusAlertDownload: `/api/motor/getcustomdatealerts?devid=%devid%&begindate=%begindate%&enddate=%enddate%`,
+  statusLogDownload: `/api/motor/getcustomdatelogs?devid=%devid%&begindate=%begindate%&enddate=%enddate%`,
+  csvVrmsDownload: `/api/getaveragemaxvrms?devid=%devid%&timerange=%timerange%&timeslot=%timeslot%`,
+  csvVrmsCustomDownload: `/api/getcustomavgmaxvrms?devid=%devid%&begindate=%begindate%&enddate=%enddate%&timeslot=%timeslot%`,
+
+  // Work Log Page
+  workLogList: `${hostname}/api/worklog`,
+
+  // Admin Panel
+  userList: `/api/users`, // GET
+  addUser: `/api/registration`, // POST
+  deleteUser: `/api/user/%id%`, // DELETE
+  updateUser: `/api/user/%id%`, // POST
+  threshold: `/api/threshold`, // GET to retrieve, POST to update
+  passwordHash: `/api/hashpassword`,
+
+  // Authentication
+  login: `/api/login`, // POST username:boss password:password
+  refreshToken: `/api/token/refresh` // POST HEADER Authorization:Bearer <refresh_token>
+};
+
+//////////    NOTE:    //////////
+////////// API Details //////////
+
+// Get Rows for Excel:
+// http://52.77.217.81/api/motor/getcustomdatevalues?devid=260038&begindate=2020-10-1&enddate=2020-10-2
+
+// Home Page:
+//     - Uptime Widget
+//         http://52.77.217.81/api/uptime
+//             Response:
+//                 {
+//                   "load": "load average: 1.01, 0.93, 0.57",
+//                   "uptime": "up 3 days, 16 hours, 7 minutes"
+//                 }
+//     - Get All Motor IDs
+//         http://52.77.217.81/api/motor/list
+//             Response:
+//                 {
+//                   "data": [
+//                     {
+//                       "device_id": 260020
+//                     }, ...
+//                   ]
+//                 }
+//     - Latest Values
+//         http://52.77.217.81/api/motors/latest
+//             Response:
+//                 {
+//                   "data": [
+//                     {
+//                       "timestamp_utc": "2020-10-11T23:54:59.537000Z",
+//                       "timestamp_raw": 1602460499535,
+//                       "device_id": 260020,
+//                       "temperature": 45.7277932155162,
+//                       "power": 149,
+//                       "battery": 81.6052415044504,
+//                       "freq1": 270.068991484156,
+//                       "freq2": 223.153283466749,
+//                       "freq3": 782.618881005184,
+//                       "freq4": 268.68194899415,
+//                       "freq5": 894.010788811833,
+//                       "freq6": 592.886970524668,
+//                       "freq7": 333.124179042451,
+//                       "freq8": 236.424595234939,
+//                       "freq9": 399.799760531432,
+//                       "freq10": 170.400162551757,
+//                       "mag1": 0.240086412343733,
+//                       "mag2": 0.229063074990947,
+//                       "mag3": 0.112397356576466,
+//                       "mag4": 0.236703616281561,
+//                       "mag5": 0.324617603625697,
+//                       "mag6": 0.00256597637483857,
+//                       "mag7": 0.0964841330316927,
+//                       "mag8": 0.37672862756121,
+//                       "mag9": 0.197464299291272,
+//                       "mag10": 0.426838445668236,
+//                       "vrms1": 0.980964852541408,
+//                       "vrms2": 1.13269345987576,
+//                       "vrms3": 0.158477044762027,
+//                       "vrms4": 0.972135921008161,
+//                       "vrms5": 0.400672831748076,
+//                       "vrms6": 0.00477574725866545,
+//                       "vrms7": 0.319602619777838,
+//                       "vrms8": 1.75831449823431,
+//                       "vrms9": 0.545012730417813,
+//                       "vrms10": 2.7641023035104,
+//                       "rssi": -55.4405811281385
+//                     }, ...
+//                   ]
+//                 }
+
+// Motor Page:
+//     - Average Graph:
+//         http://52.77.217.81/api/motor/average?devid=${devid}&item=${item}&timerange=${timerange}&timeslot=${timeslot}
+//         Parameters:
+//             // item should be avg_temperature, avg_power, avg_battery only
+//             // timerange should be 1 day, 1 week, 1 month, 1 year only
+//             // timeslot should be second, minute, hour, day, week, month only
+//     - Custom Avergae Graph:
+//         http://52.77.217.81/api/motor/customaverage?devid=${devid}&item=${item}&begindate=${begindate}&enddate=${enddate}&timeslot=${timeslot}
+//     - Line Graph:
+//         http://52.77.217.81/api/motor/getvalues?devid=${devid}&totpts=${totpts}
+//     - Freq vs. Vrms Line Graph:
+//         http://52.77.217.81/api/motor/getlatestvrmsmax?devid=${devid}&num=${totpts}
+//     - Check Status
+//         http://52.77.217.81/api/alert/getalert?devid=${devid}&num=${num}
+
+// Work Log:
+//     - Get List
+//         http://52.77.217.81/api/worklog
+//     - Get Attachment
+//         http://52.77.217.81/api/worklog?attachment_id=5
+//     - Send New Emtry
+//         http://52.77.217.81/api/worklog
+//             Sample POST
+//                 curl --location --request POST 'http://52.77.217.81/api/worklog' \
+//                 --form 'incident_id=202009101876' \
+//                 --form 'incident_date=YYYY-MM-DDTHH:mm:ss.zzzzzzZ' \
+//                 --form 'userid=technician' \
+//                 --form 'motor_id=260021' \
+//                 --form 'issue_desc=Vibration on x-axis too high.' \
+//                 --form 'observe_txt=Loose screw' \
+//                 --form 'attachments=@/home/nikhanif/Pictures/Allo-AlorGajah.png' \
+//                 --form 'attachments=@/home/nikhanif/Pictures/SempadanSEL.png'
+
+// Admin Panel:
+//     - Get All Users
+//         http://52.77.217.81/api/users
+//     - Get Single User
+//         GET http://52.77.217.81/api/user/<user_id>
+//     - Delete User
+//         DELETE http://52.77.217.81/api/user/3
+//     - Update User
+//         POST http://52.77.217.81/api/user/<user_id>
+//     - Add User
+//         http://52.77.217.81/api/registration
+//             JSON POST Format:
+//                 {
+//                     "username": "operations",
+//                     "password": "password",
+//                     "role": "user",
+//                     "name": "Da Operations"
+//                 }
+//      - Threshold:
+//          http://52.77.217.81/api/threshold
+//              GET to retrieve, POST to update
+
+// Authentication:
+//     - Log-in:
+//         http://52.77.217.81/api/login
+//             POST Parameters:
+//                 username:boss
+//                 password:password
+//     - Hash Password (for Admin Panel):
+//         http://52.77.217.81/api/hashpassword
+//             POST Parameters:
+//                 password:password
+//     - Token Refresh:
+//         http://52.77.217.81/api/token/refresh
+//             POST Header:
+//                 Authorization:Bearer <refresh_token>
+//     - Test Auth (for Testing):
+//         http://52.77.217.81/api/secret
+//             GET Header:
+//                 Authorization:Bearer <access_token>
+
+// RSSI Threshold:
+// -50 dBm is #0f0, -80 to -50 is #ff0, -100 to -80 is #fa0, the rest is #f00
+
+// Resource:
+// https://www.metageek.com/training/resources/understanding-rssi.html

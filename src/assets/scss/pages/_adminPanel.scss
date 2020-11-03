@@ -1,0 +1,187 @@
+.adminPanelContainer {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  margin-bottom: 2rem;
+
+  & svg {
+    margin: 0 0.5em;
+  }
+}
+
+.users__sub-title,
+.threshold__title {
+  margin-top: 3rem;
+}
+
+.thresholds {
+  width: 45vw;
+
+  & h2 {
+    text-align: center;
+  }
+}
+
+.threshold {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+
+  & > * {
+    margin-right: 2rem;
+  }
+
+  & > input {
+    text-align: right;
+    margin-left: auto;
+    padding: 0.25em 1em;
+  }
+
+  & svg {
+    margin: 0 0.5em;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.threshold-confirm {
+  display: none;
+  margin-right: 0;
+
+  & i:first-child {
+    margin-right: 1rem;
+  }
+}
+
+.users {
+  width: 45vw;
+
+  & h2 {
+    text-align: center;
+  }
+}
+
+.usersList {
+  &--row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #fff;
+
+    & input {
+      text-align: center;
+      background: transparent;
+      color: white;
+      border: none;
+    }
+
+    & select {
+      opacity: 1;
+      appearance: none;
+      text-align-last: center;
+      background: transparent;
+      color: white;
+      border: none;
+
+      & option {
+        color: black;
+      }
+    }
+
+    & > * {
+      flex: 1 0;
+      // ellipses if overflow
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &.header {
+      font-size: 1.2em;
+      font-weight: 400;
+      padding: 0.5em 0;
+      margin-bottom: 0.5rem;
+      background: #666;
+      border-radius: 5px 5px 0 0;
+      border-bottom: 2px solid #fff;
+    }
+  }
+}
+
+.userActions {
+  & i:first-child {
+    margin-right: 1rem;
+  }
+}
+
+.delConfirm,
+.editConfirm {
+  display: none;
+  // display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btn--add-user,
+.confirm-delete,
+.confirm-edit {
+  padding: 0.25em 0.5em;
+  color: #fff;
+  border-radius: 5px;
+  background: red;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 0.5em;
+  border: none;
+}
+
+.btn--add-user,
+.confirm-edit {
+  background: limegreen;
+}
+
+.cancel-delete,
+.cancel-edit {
+  padding: 0.25em 0.5em;
+  color: #fff;
+  border-radius: 5px;
+  background: grey;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: none;
+}
+
+.addUserForm {
+  display: flex;
+  flex-direction: column;
+
+  & > * {
+    // display: block;
+    margin-top: 2rem;
+    width: 100%;
+
+    & > * {
+      display: block;
+      width: 100%;
+
+      &:last-child {
+        margin-top: 0.5rem;
+        border-radius: 5px;
+        padding: 0.25em;
+        font-size: 1.6rem;
+      }
+    }
+  }
+
+  & button {
+    padding: 0.5em;
+  }
+}
