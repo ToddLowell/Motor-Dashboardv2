@@ -60,11 +60,32 @@ export default {
     },
     // get user's lat and long
     setPosition(position) {
-      let latitude = position.coords.latitude;
-      let longitude = position.coords.longitude;
+      const latitude = position.coords.latitude;
+      const longitude = position.coords.longitude;
 
       // get weather from API
-      let api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${this.key}`;
+      const api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${this.key}`;
+
+      fetch(api)
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          this.celsius.value = Math.floor(data.main.temp - 273);
+          this.description = data.weather[0].description;
+          this.iconId = data.weather[0].icon;
+          this.city = data.name;
+          this.country = data.sys.country;
+          this.imageLocation = `/assets/images/weather-icons/${this.iconId}.png`;
+        });
+    },
+    // hardcoded to KL
+    setKLPosition() {
+      const latitude = 3.1523;
+      const longitude = 101.708;
+
+      // get weather from API
+      const api = `http://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${this.key}`;
 
       fetch(api)
         .then(response => {
@@ -80,9 +101,13 @@ export default {
         });
     },
     // display error
+    // eslint-disable-next-line no-unused-vars
     showError(error) {
-      this.error = true;
-      this.errorMsg = error.message;
+      // NOTE: commenting out the error handling
+      // this.error = true;
+      // this.errorMsg = error.message;
+      // NOTE: display hardcoded coordinates
+      this.setKLPosition();
     }
   },
   mounted() {
