@@ -235,7 +235,8 @@ export default {
       csvSelectedMotor: null,
       username: localStorage.getItem('username'),
       firstTimeSetUp: false,
-      ringChartAlignmentVar: {}
+      ringChartAlignmentVar: {},
+      resizeObserver: null
     };
   },
   computed: {
@@ -257,7 +258,10 @@ export default {
       this.customAverageGraphRange(param, id, motorID);
     });
 
-    ['resize', 'click'].forEach(event => {
+    this.resizeObserver = new ResizeObserver(this.onResize);
+    this.resizeObserver.observe(document.querySelector('body'));
+
+    ['resize'].forEach(event => {
       window.addEventListener(event, this.onResize);
     });
   },
@@ -554,6 +558,7 @@ export default {
     }
   },
   beforeDestroy() {
+    this.resizeObserver.unobserve(document.querySelector('body'));
     // unregister the event listener before destroying this Vue instance
     ['resize', 'click'].forEach(event => {
       window.removeEventListener(event, this.onResize);
