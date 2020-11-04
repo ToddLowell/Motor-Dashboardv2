@@ -290,9 +290,18 @@ export default {
       }
       // else hash new password
       else {
-        var res = await axios.post(this.$store.state.api.passwordHash, {
-          password
-        });
+        var FormData = require('form-data');
+        var data = new FormData();
+        data.append('password', password);
+
+        var config = {
+          method: 'post',
+          url: this.$store.state.api.passwordHash,
+          data: data
+        };
+
+        var res = await axios(config);
+        console.log(res);
         password = res.data['pbkdf2-sha256'];
         // console.log(result['pbkdf2-sha256']);
       }
