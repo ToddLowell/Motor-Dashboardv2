@@ -205,7 +205,7 @@ require('jquery-ui/ui/widgets/sortable');
 require('jquery-ui/ui/widgets/dialog');
 import Litepicker from 'litepicker';
 
-import init from '../assets/js/index.js';
+import init, { close } from '../assets/js/index.js';
 
 import { eventBus } from '../main.js';
 import motorSvgIcon from '../components/charts/MotorSvgIcon.vue';
@@ -563,6 +563,9 @@ export default {
     ['resize', 'click'].forEach(event => {
       window.removeEventListener(event, this.onResize);
     });
+
+    // remove setIntervals
+    close();
   }
 };
 </script>

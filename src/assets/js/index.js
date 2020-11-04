@@ -1,10 +1,14 @@
 import getThresholds from './models/thresholds';
-import { init } from './models/Charts';
+import { init, close } from './models/Charts';
 
 export default async function() {
   // get thresholds
   var thresholds = await getThresholds();
 
   // setup all motors
-  init(thresholds);
+  var intervals = init(thresholds);
+
+  return intervals;
 }
+
+export { close };

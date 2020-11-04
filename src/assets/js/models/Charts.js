@@ -6,6 +6,8 @@ const { Parser } = require('json2csv');
 let threshold;
 let muteAlarm = false;
 let alarmPresent = false;
+var latestInterval = null;
+var uptimeInterval = null;
 
 const motorIDs = store.getters.motorIDs;
 
@@ -62,17 +64,22 @@ export function init(thresholds) {
   uptimewidget();
 
   // check latest values every second
-  setInterval(() => {
+  latestInterval = setInterval(() => {
     checkLatestValues();
   }, 1000);
 
   // update uptime every minute
-  setInterval(() => {
+  uptimeInterval = setInterval(() => {
     uptimewidget();
   }, 60000);
 
   // alarm
   muteButtonListener();
+}
+
+export function close() {
+  clearInterval(latestInterval);
+  clearInterval(uptimeInterval);
 }
 
 ////////////////////
