@@ -13,27 +13,28 @@ const routes = [
   {
     path: '/',
     name: 'LogIn',
-    meta: { notLoggedIn: true },
+    meta: { title: 'Sign In', notLoggedIn: true },
     component: LogIn
   },
   {
     path: '/dashboard',
     name: 'Dashboard',
-    meta: { needsAuth: true },
+    meta: { title: 'Dashboard', needsAuth: true },
     component: Dashboard
   },
   {
     path: '/admin-panel',
-    meta: { needsAuth: true, adminOnly: true },
+    meta: { title: 'Admin Panel', needsAuth: true, adminOnly: true },
     component: AdminPanel
   },
   {
     path: '/work-list',
-    meta: { needsAuth: true },
+    meta: { title: 'Work List', needsAuth: true },
     component: WorkList
   },
   {
     path: '/:notFound(.*)',
+    meta: { title: 'Page not Found' },
     component: Error404
   }
 ];
@@ -64,6 +65,14 @@ router.beforeEach((to, from, next) => {
   else if (to.meta.adminOnly && !store.getters.isAdmin) {
     router.replace('/dashboard');
   } else next();
+});
+
+const DEFAULT_TITLE = 'MIMOS Motor Dashboard';
+
+router.afterEach(to => {
+  Vue.nextTick(() => {
+    document.title = to.meta.title || DEFAULT_TITLE;
+  });
 });
 
 export default router;
