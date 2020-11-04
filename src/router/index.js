@@ -54,11 +54,11 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   // if needs auth and has no access token go to login page
-  if (to.meta.needsAuth && !store.getters.accessToken) {
+  if (to.meta.needsAuth && !localStorage.getItem('accessToken')) {
     router.replace('/');
   }
   // if access token is present go to home page
-  else if (to.meta.notLoggedIn && store.getters.accessToken) {
+  else if (to.meta.notLoggedIn && localStorage.getItem('accessToken')) {
     router.replace('/dashboard');
   }
   // if going to admin page and is not admin

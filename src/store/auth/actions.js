@@ -125,6 +125,8 @@ export default {
             clearInterval(refresh);
             context.dispatch('logout');
           }, tokenExpiration);
+
+          router.replace('/dashboard');
         }
       })
       .catch(() => {
