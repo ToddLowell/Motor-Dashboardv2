@@ -6,11 +6,11 @@
   transition: all 0.2s;
 
   &:hover {
-    opacity: 70% !important;
+    filter: brightness(70%);
   }
 
   &:active {
-    opacity: 50% !important;
+    filter: brightness(50%);
   }
 }
 
