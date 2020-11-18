@@ -5,10 +5,10 @@
     </base-dialog>
     <div class="nav">
       <div v-show="displaySidebar" class="nav--logo">
-        <img src="@/assets/images/logo-mahb2.png" alt="" />
+        <img src="@/assets/images/company.jpg" alt="" />
       </div>
       <div class="nav--text">
-        <h1 class="header__primary">MAHB Baggage Handling System Dashboard</h1>
+        <h1 class="header__primary">Motor Dashboard</h1>
       </div>
       <div id="mute" class="btn">
         <fa :icon="['fas', 'volume-up']" />

@@ -8,7 +8,7 @@
     </base-dialog>
     <div class="login--container card">
       <div class="login--image-holder">
-        <img src="@/assets/images/logo-mahb2.png" alt="" class="login--image" />
+        <img src="@/assets/images/company.jpg" alt="" class="login--image" />
         <p class="login--text">SIGN IN</p>
       </div>
       <form class="login--form">
