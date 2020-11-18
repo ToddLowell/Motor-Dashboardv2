@@ -767,8 +767,8 @@ function checkStatus(devid, num) {
 }
 
 // download CSV
-function downloadCSV(api_url, begin = '', endOri = '', fileNameSuffix, csvSelectedMotor) {
-  axios(api_url)
+async function downloadCSV(api_url, begin = '', endOri = '', fileNameSuffix, csvSelectedMotor) {
+  return axios(api_url)
     .then(res => {
       if (res.data.data.length === 0) {
         if (begin || alert)

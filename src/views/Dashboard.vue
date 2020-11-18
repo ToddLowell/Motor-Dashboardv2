@@ -1,5 +1,8 @@
 <template>
   <div class="container">
+    <base-dialog fixed :show="retrievingCSV" title="Downloading CSV..." style="z-index: 1001">
+      <base-spinner></base-spinner>
+    </base-dialog>
     <div class="nav">
       <div v-show="displaySidebar" class="nav--logo">
         <img src="@/assets/images/logo-mahb2.png" alt="" />
@@ -226,6 +229,7 @@ export default {
       activeIndex: -1,
       displaySidebar: true,
       displayWorkLogForm: false,
+      retrievingCSV: false,
       csvDataTypes: ['data', 'avg. vrms', 'custom avg. vrms'],
       selectedDataType: 'data',
       csvStatusTypes: ['alert', 'log'],
@@ -373,7 +377,7 @@ export default {
       if (e == 'data') $('#downloadCsvDialog').dialog('open');
       else if (e == 'status') $('#downloadStatusCsvDialog').dialog('open');
     },
-    downloadData(type) {
+    async downloadData(type) {
       var startDate;
       var endDate;
       var api_url;
@@ -465,9 +469,17 @@ export default {
         }
       }
 
-      window.downloadCSV(api_url, begin, endOri, fileNameSuffix, this.csvSelectedMotor);
+      // open loader
+      this.retrievingCSV = true;
 
+      // close jQ dialog
       $('#downloadCsvDialog').dialog('close');
+
+      // call func
+      await window.downloadCSV(api_url, begin, endOri, fileNameSuffix, this.csvSelectedMotor);
+
+      // close loader
+      this.retrievingCSV = false;
     },
     positionRingCharts() {
       // resize ring charts so that the flex children have equal number of elements per line on flex-wrap
