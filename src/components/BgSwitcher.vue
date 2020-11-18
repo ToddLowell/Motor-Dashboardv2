@@ -1,5 +1,9 @@
 <template>
-  <simple-bar class="right-sidebar" :class="{ 'right-toggled': colorSwitcherActive }">
+  <simple-bar
+    class="right-sidebar"
+    :class="{ 'right-toggled': colorSwitcherActive }"
+    style="z-index: 1001"
+  >
     <div class="switcher-icon" @click="colorSwitcherActive = !colorSwitcherActive">
       <fa :icon="['fas', 'cog']" />
     </div>
